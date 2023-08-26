@@ -21,12 +21,6 @@ Todos os usuários do sistema têm senhas que são utilizadas para validação d
 
 ## História de usuários
 
-> Antes de começar a escrever histórias, recomenda-se listar os principais usuários que vão interagir com o sistema. Assim, evita-se que as histórias fiquem enviesadas e atendam às necessidades de apenas certos usuários. Definidos esses papéis de usuários (user roles), costuma-se escrever as histórias no seguinte formato:
-
-	"Como um [papel de usuário], eu gostaria de [realizar algo com o sistema]"
-
-fonte: Engenharia de Software Moderna, disponível em https://engsoftmoderna.info/cap3.html
-
 Agentes: Secretário(a), Professor(a), Aluno(a)
 
 
@@ -48,14 +42,11 @@ Agentes: Secretário(a), Professor(a), Aluno(a)
 
 ## Casos de uso
 
+### Diagrama de Caso de Uso
+![diagrama de caso de uso](./Projeto/DCU-versao2.png)
 
-	"Casos de uso são escritos na perspectiva de um ator que deseja usar o sistema com um objetivo. Tipicamente, esse ator é um usuário humano (embora possa ser um outro sistema de software ou hardware). Ou seja, normalmente, o ator é uma entidade externa ao sistema."
-
-> Explicando com mais detalhes, um caso de uso enumera os passos que um ator realiza em um sistema com um determinado objetivo. Na verdade, um caso de uso inclui duas listas de passos. A primeira representa o fluxo normal de passos necessários para concluir uma operação com sucesso. Ou seja, o fluxo normal descreve um cenário em que tudo dá certo, às vezes chamado também de fluxo feliz. Já a segunda lista inclui extensões do fluxo normal, as quais representam alternativas de execução de um passo normal ou então situações de erro. Ambos os fluxos — normal e extensões — serão posteriormente implementados no sistema. Mostra-se a seguir um caso de uso, referente a um sistema bancário e que especifica uma transferência entre contas, por um cliente do banco."
-
-fonte: Engenharia de Software Moderna, disponível em https://engsoftmoderna.info/cap3.html
-
-### Gerar currículo para o semestre
+### Descrição do caso de uso para cada ator
+### *Gerar currículo para o semestre*
 Ator: Secreterário(a)
 
 **Fluxo normal:**
@@ -69,7 +60,7 @@ as que não cumprem estas condições.
 
 
 
-### Matricular-se
+### *Matricular-se*
 Ator: Aluno(a)
 
 **Fluxo normal**:
@@ -86,12 +77,12 @@ Ator: Aluno(a)
 * 5a : O(a) aluno não pode cancelar a matrícula fora do prazo.
 
 
-### Verificar alunos
+### *Verificar alunos*
 Ator: Professor(a)
 
 **Fluxo principal:**
 1. O sistema autentica o(a) professor(a) com login e senha.
 2. O sistema informa para o professor os alunos que estão na(s) sua(s) disciplina(s) informadas.
 
-### Diagrama de Caso de Uso
-![diagrama de caso de uso](./Projeto/DCU-versao2.png)
+## Referências
+fonte: Engenharia de Software Moderna, disponível em https://engsoftmoderna.info/cap3.html
