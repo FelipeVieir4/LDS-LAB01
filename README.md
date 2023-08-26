@@ -94,4 +94,4 @@ Ator: Professor(a)
 2. O sistema informa para o professor os alunos que estão na(s) sua(s) disciplina(s) informadas.
 
 ### Diagrama de Caso de Uso
-![diagrama de caso de uso](../LDS-LAB01/Projeto/DCU-versao2.png)
+![diagrama de caso de uso](./Projeto/DCU-versao2.png)
