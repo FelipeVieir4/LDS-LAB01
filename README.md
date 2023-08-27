@@ -43,7 +43,7 @@ Agentes: Secretário(a), Professor(a), Aluno(a)
 ## Casos de uso
 
 ### Diagrama de Caso de Uso
-![diagrama de caso de uso](./Projeto/DCU-versao2.png)
+![diagrama de caso de uso](./Projeto/DCU.jpg)
 
 ### Descrição do caso de uso para cada ator
 ### *Gerar currículo para o semestre*
@@ -85,4 +85,5 @@ Ator: Professor(a)
 2. O sistema informa para o professor os alunos que estão na(s) sua(s) disciplina(s) informadas.
 
 ## Referências
-fonte: Engenharia de Software Moderna, disponível em https://engsoftmoderna.info/cap3.html
+
+VALENTE, M. T. (2020), “Engenharia de Software Moderna” disponível em https://engsoftmoderna.info/.
