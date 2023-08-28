@@ -1,5 +1,4 @@
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 public class DisciplinaOfertada extends Disciplina {
@@ -9,20 +8,27 @@ public class DisciplinaOfertada extends Disciplina {
     private int semestreOfertado;
     private List<Aluno> alunos;
 
-    public DisciplinaOfertada(String nome, int codigo, Integer credito,
-            BigDecimal valorCustoHora, EnumTipoDisciplina tipo,
-            Professor professor, boolean estaAtivo,
-            int anoOfertado, int semestreOfertado) {
+    public DisciplinaOfertada(String nome, Integer credito, BigDecimal valorCustoHora, EnumTipoDisciplina tipo,
+            Professor professor, boolean estaAtivo, int anoOfertado, int semestreOfertado, List<Aluno> alunos) {
         super(nome, credito, valorCustoHora, tipo);
         this.professor = professor;
         this.estaAtivo = estaAtivo;
         this.anoOfertado = anoOfertado;
         this.semestreOfertado = semestreOfertado;
-        this.alunos = new ArrayList<>();
+        this.alunos = alunos;
+    }
+
+    public DisciplinaOfertada(Professor professor, boolean estaAtivo, int anoOfertado, int semestreOfertado,
+            List<Aluno> alunos) {
+        this.professor = professor;
+        this.estaAtivo = estaAtivo;
+        this.anoOfertado = anoOfertado;
+        this.semestreOfertado = semestreOfertado;
+        this.alunos = alunos;
     }
 
     public DisciplinaOfertada() {
-        super();
+
     }
 
     public int verificarTotalAlunos() {
