@@ -2,16 +2,20 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Aluno {
+public class Aluno implements IAutenticavel {
     private String login;
     private String senha;
     private List<DisciplinaOfertada> disciplinasObrigatorias;
     private List<DisciplinaOfertada> disciplinasOptativas;
     private LocalDate prazoMatricula;
+    private Aluno alunoAtual;
 
-    public Aluno(LocalDate prazoMatricula) {
-        this.disciplinasObrigatorias = new ArrayList<>();
-        this.disciplinasOptativas = new ArrayList<>();
+    public Aluno(String login, String senha, List<DisciplinaOfertada> disciplinasObrigatorias,
+            List<DisciplinaOfertada> disciplinasOptativas, LocalDate prazoMatricula) {
+        this.login = login;
+        this.senha = senha;
+        this.disciplinasObrigatorias = disciplinasObrigatorias;
+        this.disciplinasOptativas = disciplinasOptativas;
         this.prazoMatricula = prazoMatricula;
     }
 
@@ -70,5 +74,48 @@ public class Aluno {
 
     public boolean matricularSemestre() {
         return false;
+    }
+
+    /**
+     * Retorna o login do cliente.
+     *
+     * @return String com o login do cliente.
+     */
+    public String getLogin() {
+        return this.login;
+    }
+
+    /**
+     * Verifica se a senha fornecida é igual à senha armazenada neste objeto de
+     * cliente.
+     *
+     * @param senha A senha a ser verificada.
+     * @return true se a senha fornecida é igual à senha armazenada neste objeto de
+     *         cliente, false caso contrário.
+     */
+    public boolean senhaCorreta(String senha) {
+        return this.senha.equals(senha);
+    }
+
+    @Override
+    public boolean autenticar(String login, String senha) throws Exception {
+        boolean resp = false;
+        if (login == null) {
+            System.out.println("Login nao pode ser null");
+            return resp;
+        } else {
+            if (login == "login") {
+                if (senha == "senha") {
+                    resp = true;
+                    return resp;
+                } else {
+                    System.out.println("Senha incorreta");
+                    return resp;
+                }
+            } else {
+                System.out.println("Login nao encontrado");
+                return resp;
+            }
+        }
     }
 }
