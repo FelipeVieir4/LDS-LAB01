@@ -6,6 +6,7 @@ public class Disciplina {
     private Integer credito;
     private BigDecimal valorCustoHora;
     private EnumTipoDisciplina tipo;
+    private static BigDecimal ultimoId = BigDecimal.ZERO; // Variável para controlar o último ID utilizado
 
     public Disciplina(String nome, Integer credito,
             BigDecimal valorCustoHora, EnumTipoDisciplina tipo) {

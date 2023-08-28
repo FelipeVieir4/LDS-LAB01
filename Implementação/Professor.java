@@ -13,7 +13,7 @@ public class Professor {
         this.senha = senha;
     }
 
-    public List<Aluno> consultarAlunosPorDisciplina(Disciplina disciplina) {
+    public List<Aluno> consultarAlunosPorDisciplina(DisciplinaOfertada disciplina) {
         return disciplina.getAlunos();
     }
 

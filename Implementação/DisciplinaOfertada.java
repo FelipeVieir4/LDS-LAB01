@@ -3,9 +3,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DisciplinaOfertada extends Disciplina {
-    private static BigDecimal ultimoId = BigDecimal.ZERO; // Variável para controlar o último ID utilizado
-    private BigDecimal id; // ID da disciplina ofertada
-
     private Professor professor;
     private boolean estaAtivo;
     private int anoOfertado;

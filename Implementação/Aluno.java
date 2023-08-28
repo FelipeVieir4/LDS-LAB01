@@ -1,12 +1,12 @@
-import java.util.List;
-import java.util.ArrayList;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Aluno {
     private String login;
     private String senha;
-    private List<String> disciplinasObrigatorias;
-    private List<String> disciplinasOptativas;
+    private List<DisciplinaOfertada> disciplinasObrigatorias;
+    private List<DisciplinaOfertada> disciplinasOptativas;
     private LocalDate prazoMatricula;
 
     public Aluno(LocalDate prazoMatricula) {
@@ -20,11 +20,11 @@ public class Aluno {
         this.senha = senha;
     }
 
-    public boolean incluirDisciplina(Disciplina disciplina) {
+    public boolean incluirDisciplina(DisciplinaOfertada disciplina) {
         return false;
     }
 
-    private void incluirDisciplinaObrigatoria(Disciplina disciplina) {
+    private void incluirDisciplinaObrigatoria(DisciplinaOfertada disciplina) {
         if (LocalDate.now().isAfter(prazoMatricula)) {
             System.out.println("Não é possível se matricular fora do prazo.");
             return;
@@ -36,7 +36,7 @@ public class Aluno {
         this.disciplinasObrigatorias.add(disciplina);
     }
 
-    private void incluirDisciplinaOptativa(Disciplina disciplina) {
+    private void incluirDisciplinaOptativa(DisciplinaOfertada disciplina) {
         if (LocalDate.now().isAfter(prazoMatricula)) {
             System.out.println("Não é possível se matricular fora do prazo.");
             return;
@@ -48,7 +48,7 @@ public class Aluno {
         this.disciplinasOptativas.add(disciplina);
     }
 
-    public void removerDisciplina(Disciplina disciplina) {
+    public void removerDisciplina(DisciplinaOfertada disciplina) {
         if (LocalDate.now().isAfter(prazoMatricula)) {
             System.out.println("Não é possível alterar as disciplinas fora do prazo.");
             return;
@@ -57,10 +57,14 @@ public class Aluno {
         this.disciplinasOptativas.remove(disciplina);
     }
 
-    public List<Disciplina> listarDisciplinas() {
-        List<Disciplina> todasDisciplinas = new ArrayList<>();
-        todasDisciplinas.add(disciplinasObrigatorias);
-        todasDisciplinas.add(disciplinasOptativas);
+    public List<DisciplinaOfertada> listarDisciplinas() {
+        List<DisciplinaOfertada> todasDisciplinas = new ArrayList<>();
+        for (DisciplinaOfertada disciplinaOfertada : disciplinasObrigatorias) {
+            todasDisciplinas.add(disciplinaOfertada);
+        }
+        for (DisciplinaOfertada disciplinaOfertada : disciplinasOptativas) {
+            todasDisciplinas.add(disciplinaOfertada);
+        }
         return todasDisciplinas;
     }
 
