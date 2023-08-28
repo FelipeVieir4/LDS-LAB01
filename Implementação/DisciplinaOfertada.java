@@ -12,6 +12,26 @@ public class DisciplinaOfertada extends Disciplina {
     private int semestreOfertado;
     private List<Aluno> alunos;
 
+    public DisciplinaOfertada(String nome, int codigo, Integer credito,
+            BigDecimal valorCustoHora, EnumTipoDisciplina tipo,
+            Professor professor, boolean estaAtivo,
+            int anoOfertado, int semestreOfertado) {
+        super(nome, credito, valorCustoHora, tipo);
+        this.professor = professor;
+        this.estaAtivo = estaAtivo;
+        this.anoOfertado = anoOfertado;
+        this.semestreOfertado = semestreOfertado;
+        this.alunos = new ArrayList<>();
+    }
+
+    public DisciplinaOfertada() {
+        super();
+    }
+
+    public int verificarTotalAlunos() {
+        return alunos.size();
+    }
+
     public Professor getProfessor() {
         return professor;
     }
@@ -50,32 +70,5 @@ public class DisciplinaOfertada extends Disciplina {
 
     public void setAlunos(List<Aluno> alunos) {
         this.alunos = alunos;
-    }
-
-    public DisciplinaOfertada(String nome, int codigo, Integer credito,
-            BigDecimal valorCustoHora, EnumTipoDisciplina tipo,
-            Professor professor, boolean estaAtivo,
-            int anoOfertado, int semestreOfertado) {
-        super(valorCustoHora, nome, credito, valorCustoHora, tipo);
-        this.id = getNextId(); // Obtém o próximo ID autoincrementado
-        this.professor = professor;
-        this.estaAtivo = estaAtivo;
-        this.anoOfertado = anoOfertado;
-        this.semestreOfertado = semestreOfertado;
-        this.alunos = new ArrayList<>();
-    }
-
-    public DisciplinaOfertada() {
-        super();
-    }
-
-    // Método para obter o próximo ID autoincrementado
-    private static synchronized BigDecimal getNextId() {
-        ultimoId = ultimoId.add(BigDecimal.ONE);
-        return ultimoId;
-    }
-
-    public int verificarTotalAlunos() {
-        return alunos.size();
     }
 }

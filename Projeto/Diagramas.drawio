@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e" pages="3">
     <diagram name="Caso de Uso" id="6d8ePc2PMjv4wtkg84vL">
-        <mxGraphModel dx="1818" dy="532" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1484" dy="310" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -600,7 +600,7 @@
         </mxGraphModel>
     </diagram>
     <diagram name="ClasseV3" id="E9Au2Fet9nJ_z51p9vvj">
-        <mxGraphModel dx="1900" dy="1929" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1922" dy="1922" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="D2tF97LblFw6H74tAXi1-0"/>
                 <mxCell id="D2tF97LblFw6H74tAXi1-1" parent="D2tF97LblFw6H74tAXi1-0"/>
@@ -820,7 +820,7 @@
                 <mxCell id="D2tF97LblFw6H74tAXi1-73" value="DisciplinaOfertada" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="D2tF97LblFw6H74tAXi1-1" vertex="1">
                     <mxGeometry x="-320" y="102" width="470" height="216" as="geometry"/>
                 </mxCell>
-                <mxCell id="rMDACzgJUzjWrRKzRVbP-0" value="- id: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="D2tF97LblFw6H74tAXi1-73">
+                <mxCell id="rMDACzgJUzjWrRKzRVbP-0" value="- id: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="D2tF97LblFw6H74tAXi1-73" vertex="1">
                     <mxGeometry y="26" width="470" height="26" as="geometry"/>
                 </mxCell>
                 <mxCell id="D2tF97LblFw6H74tAXi1-74" value="- professor: Professor" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="D2tF97LblFw6H74tAXi1-73" vertex="1">

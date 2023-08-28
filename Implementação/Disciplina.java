@@ -7,8 +7,9 @@ public class Disciplina {
     private BigDecimal valorCustoHora;
     private EnumTipoDisciplina tipo;
 
-    public Disciplina(BigDecimal id, String nome, Integer credito, BigDecimal valorCustoHora, EnumTipoDisciplina tipo) {
-        this.id = id;
+    public Disciplina(String nome, Integer credito,
+            BigDecimal valorCustoHora, EnumTipoDisciplina tipo) {
+        this.id = getNextId();
         this.nome = nome;
         this.credito = credito;
         this.valorCustoHora = valorCustoHora;
@@ -17,6 +18,12 @@ public class Disciplina {
 
     public Disciplina() {
 
+    }
+
+    // Método para obter o próximo ID autoincrementado
+    private static synchronized BigDecimal getNextId() {
+        ultimoId = ultimoId.add(BigDecimal.ONE);
+        return ultimoId;
     }
 
     public BigDecimal getId() {
