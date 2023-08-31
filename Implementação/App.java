@@ -2,6 +2,8 @@ import java.util.Scanner;
 
 import javax.naming.NameNotFoundException;
 
+import ModelController.Aluno;
+
 public class App {
     static Scanner scanner = new Scanner(System.in);
     static Aluno aluno;
