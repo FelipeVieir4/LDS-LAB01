@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2023-08-31T00:47:43.579Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" version="21.6.5" etag="aFPNQ9vZdBl8ZG2B0Hf6" type="device" pages="5">
+<mxfile host="Electron" modified="2023-08-31T01:03:10.167Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.6.5 Chrome/114.0.5735.243 Electron/25.3.1 Safari/537.36" version="21.6.5" etag="4Opy2hfiN_w2Q-eNR09X" type="device" pages="5">
   <diagram name="Caso de Uso" id="6d8ePc2PMjv4wtkg84vL">
     <mxGraphModel dx="1863" dy="606" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -851,7 +851,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="ClasseV4" id="QiHSSAgkpXhVQKnd3VJH">
-    <mxGraphModel dx="2442" dy="2124" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1463" dy="1545" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="mJrvWHXJrUR8_9ORjwO3-0" />
         <mxCell id="mJrvWHXJrUR8_9ORjwO3-1" parent="mJrvWHXJrUR8_9ORjwO3-0" />
@@ -1083,7 +1083,7 @@
         <mxCell id="mJrvWHXJrUR8_9ORjwO3-81" value="+ adicionarMatricula(): int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="mJrvWHXJrUR8_9ORjwO3-73">
           <mxGeometry y="268" width="470" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="t9iPUhRVH-ncP0_UBNLG-37" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="mJrvWHXJrUR8_9ORjwO3-73">
+        <mxCell id="t9iPUhRVH-ncP0_UBNLG-37" value="+ removerMatricula();" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="mJrvWHXJrUR8_9ORjwO3-73">
           <mxGeometry y="294" width="470" height="26" as="geometry" />
         </mxCell>
         <mxCell id="t9iPUhRVH-ncP0_UBNLG-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;endSize=10;startSize=10;" edge="1" parent="mJrvWHXJrUR8_9ORjwO3-1" source="t9iPUhRVH-ncP0_UBNLG-0" target="t9iPUhRVH-ncP0_UBNLG-24">
