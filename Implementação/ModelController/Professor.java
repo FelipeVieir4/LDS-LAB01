@@ -36,7 +36,8 @@ public class Professor extends Pessoa {
     }
 
     /**
-     * Lista as disciplinas em que o professor está matriculado em um determinado ano e semestre.
+     * Lista as disciplinas em que o professor está matriculado em um determinado
+     * ano e semestre.
      *
      * @param ano      O ano a ser considerado.
      * @param semestre O semestre a ser considerado.
@@ -45,7 +46,17 @@ public class Professor extends Pessoa {
     public ArrayList<Disciplina> listarTurmasMatriculadas(int ano, int semestre) {
         ArrayList<Disciplina> lista = new ArrayList<Disciplina>();
 
-        // TODO aplicar lógica para buscar disciplinas em que o professor está matriculado.
+        // TODO aplicar lógica para buscar disciplinas em que o professor está
+        // matriculado.
+
+        /*
+         * 1. Deve buscar no csv as turmas montadas de todos os anos
+         * 2. Então deve buscar as turmas que contem o ano e semestre passado por
+         * parametro
+         * 3. Deve associar em um novo array as turmas que são daquele professor que
+         * buscou
+         * 4. Deve retornar o arraylist montado.
+         */
 
         return lista;
     }
@@ -60,7 +71,13 @@ public class Professor extends Pessoa {
         ArrayList<Aluno> lista = new ArrayList<Aluno>();
 
         // TODO aplicar lógica para buscar alunos na turma selecionada
-        
+
+        /*
+         * 1. Buscar no csv todas as disciplinas
+         * 2. Encontrar nesse list montado a disciplina desejada
+         * 3. pegar a lista de alunos e retorna-la
+         */
+
         return lista;
     }
 

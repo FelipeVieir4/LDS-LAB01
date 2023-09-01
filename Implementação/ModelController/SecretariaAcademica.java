@@ -1,12 +1,14 @@
 package ModelController;
 
 /**
- * Representa a secretaria acadêmica com informações básicas como nome, login e senha.
+ * Representa a secretaria acadêmica com informações básicas como nome, login e
+ * senha.
  */
 public class SecretariaAcademica extends Pessoa {
 
     /**
-     * Construtor para criar um objeto SecretariaAcademica com um ID gerado automaticamente.
+     * Construtor para criar um objeto SecretariaAcademica com um ID gerado
+     * automaticamente.
      *
      * @param login O login da secretaria acadêmica.
      * @param senha A senha da secretaria acadêmica.
@@ -40,6 +42,10 @@ public class SecretariaAcademica extends Pessoa {
      */
     public void cadastrarCurso(Curso curso) {
         // TODO aplicar lógica para DAO salvar o curso
+
+        /*
+         * 1. Deve dar um new constructor com o objeto passado por parametro
+         */
     }
 
     /**
@@ -49,6 +55,10 @@ public class SecretariaAcademica extends Pessoa {
      */
     public void criarTurma(Turma turma) {
         // TODO aplicar lógica para DAO salvar uma turma
+
+        /*
+         * 1. Deve dar um new constructor com o objeto passado por parametro
+         */
     }
 
     /**
@@ -58,6 +68,10 @@ public class SecretariaAcademica extends Pessoa {
      */
     public void cadastrarAluno(Aluno aluno) {
         // TODO aplicar lógica para DAO salvar um aluno
+
+        /*
+         * 1. Deve dar um new constructor com o objeto passado por parametro
+         */
     }
 
     /**
@@ -68,6 +82,13 @@ public class SecretariaAcademica extends Pessoa {
      */
     public void matricularAluno(Turma turma, Matricula matricula) {
         // TODO aplicar lógica para DAO salvar uma matrícula num aluno
+
+        /*
+         * 1. Deve atribuir os parametros em variaveis
+         * 2. Deve checar se a turma contem mais de 60 alunos
+         * 3. inserir a matricula na turma
+         * 4. realizar um +1 na quantidade da turma
+         */
     }
 
     /**
@@ -75,6 +96,12 @@ public class SecretariaAcademica extends Pessoa {
      */
     public void cobrarMensalidade() {
         // TODO aplicar lógica para cobrar mensalidade de todas as matrículas
+
+        /*
+         * 1. Buscar do csv todos os alunos
+         * 2. Atribuir a uma lista
+         * 3. Notificar o aluno da mensalidade
+         */
     }
 
     /**
@@ -84,7 +111,15 @@ public class SecretariaAcademica extends Pessoa {
      * @param semestre O semestre a ser considerado.
      */
     public void validarTurmas(int ano, int semestre) {
-        // TODO aplicar lógica para percorrer todas as turmas do semestre e validar a quantidade de alunos.
+        // TODO aplicar lógica para percorrer todas as turmas do semestre e validar a
+        // quantidade de alunos.
+
+        /*
+         * 1. Buscar todas as turmas do csv
+         * 2. Pesquisar nesse list as turmas que contem os parametros passados
+         * 3. Verificar se cada turma tem - de 3 alunos ou + 60
+         * 4. caso aconteça deve DESATIVAR a turma
+         */
     }
 
     @Override
