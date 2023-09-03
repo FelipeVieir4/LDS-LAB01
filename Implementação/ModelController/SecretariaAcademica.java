@@ -1,5 +1,9 @@
 package ModelController;
 
+import java.io.IOException;
+
+import DAO.CursoDAO;
+
 /**
  * Representa a secretaria acadêmica com informações básicas como nome, login e
  * senha.
@@ -39,13 +43,12 @@ public class SecretariaAcademica extends Pessoa {
      * Cadastra um novo curso no sistema.
      *
      * @param curso O curso a ser cadastrado.
+     * @throws IOException
      */
-    public void cadastrarCurso(Curso curso) {
+    public void cadastrarCurso(Curso curso) throws IOException {
         // TODO aplicar lógica para DAO salvar o curso
-
-        /*
-         * 1. Deve dar um new constructor com o objeto passado por parametro
-         */
+        CursoDAO dao = new CursoDAO();
+        dao.salvar(curso);
     }
 
     /**
@@ -77,8 +80,8 @@ public class SecretariaAcademica extends Pessoa {
     /**
      * Matricula um aluno em uma turma.
      *
-     * @param turma     A turma em que o aluno será matriculado.
-     * @param id Id do aluno.
+     * @param turma A turma em que o aluno será matriculado.
+     * @param id    Id do aluno.
      */
     public void matricularAluno(Turma turma, int id) {
         // TODO aplicar lógica para DAO salvar uma matrícula num aluno

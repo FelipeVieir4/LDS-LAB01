@@ -65,6 +65,26 @@ public class App {
         return opcao;
     }
 
+    /*
+     * Metodo com sub menu para SECRETARIA ACADEMICA
+     */
+    public static int subMenuSecretariaAcademica() {
+        int opcao = -1;
+        do {
+            System.out.println("==========================");
+            System.out.println("Escolha o perfil:");
+            System.out.println("1 - Cadastrar novo Curso");
+            System.out.println("Sua opção:");
+            try {
+                opcao = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Por gentileza, digite um valor válido (número inteiro entre os apresentados)");
+                opcao = -1;
+            }
+        } while (opcao < 1 || opcao > 3);
+        return opcao;
+    }
+
     public static void efetuarLogin(EnumPerfil perfil) {
         limparConsole();
         LoginDAO loginDAO = new LoginDAO();
@@ -113,6 +133,7 @@ public class App {
 
     public static void main(String[] args) throws NameNotFoundException, Exception {
         init();
+
     }
 
 }
