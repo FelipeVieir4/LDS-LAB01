@@ -18,7 +18,7 @@ public class CursoDAO {
      * @throws IOException Se ocorrer um erro ao salvar o arquivo.
      */
     public void salvar(Curso curso) throws IOException {
-        String textoMontado = "";
+        String textoMontado = curso.toCSV();
         Util.salvarNoArquivo(PATH, textoMontado);
     }
 }
