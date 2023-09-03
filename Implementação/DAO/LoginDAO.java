@@ -17,19 +17,16 @@ public class LoginDAO {
                 Aluno aluno = null;
                 System.out.println("Aluno : " + dadosDoPerfil);
                 if (dadosDoPerfil.length > 0 || dadosDoPerfil != null) {
-                    // id;login;senha;nome;matriculas
+                    // id;login;senha;nome;curso
                     int id = Integer.parseInt(dadosDoPerfil[0]);
                     String loginAluno = dadosDoPerfil[1];
                     String senhaAluno = dadosDoPerfil[2];
                     String nomeAluno = dadosDoPerfil[3];
-                    aluno = new Aluno(id, loginAluno, senhaAluno, nomeAluno);
-
-                    for (int i = 4; i < dadosDoPerfil.length; i++) {
-                        aluno.adicionarMatricula(Integer.parseInt(dadosDoPerfil[i]));
-                    }
+                    String cursoAluno = dadosDoPerfil[4];
+                    aluno = new Aluno(id, loginAluno, senhaAluno, nomeAluno, cursoAluno);
                 }
+                return aluno;
 
-                break;
             case PROFESSOR:
                 System.out.println("Professor : " + dadosDoPerfil);
                 break;

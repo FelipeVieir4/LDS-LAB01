@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Aluno extends Pessoa {
 
-    private ArrayList<Integer> matriculas = new ArrayList<Integer>();
+    private String curso;
 
     /**
      * Construtor para criar um objeto Aluno.
@@ -18,8 +18,12 @@ public class Aluno extends Pessoa {
      * @throws IllegalArgumentException Se os parâmetros fornecidos forem inválidos
      *                                  (nulos ou vazios).
      */
-    public Aluno(String login, String senha, String nome) throws IllegalArgumentException {
+    public Aluno(String login, String senha, String nome, String curso) throws IllegalArgumentException {
         super(login, senha, nome);
+        if (curso.trim().isEmpty()) {
+            throw new IllegalArgumentException("O curso não pode ser nulo");
+        }
+        this.curso = curso;
     }
 
     /**
@@ -32,17 +36,12 @@ public class Aluno extends Pessoa {
      * @throws IllegalArgumentException Se os parâmetros fornecidos forem inválidos
      *                                  (nulos ou vazios).
      */
-    public Aluno(int id, String login, String senha, String nome) throws IllegalArgumentException {
+    public Aluno(int id, String login, String senha, String nome, String curso) throws IllegalArgumentException {
         super(id, login, senha, nome);
-    }
-
-    /**
-     * Adiciona uma matrícula à lista de matrículas do aluno.
-     *
-     * @param mat A matrícula a ser adicionada.
-     */
-    public void adicionarMatricula(int mat) {
-        matriculas.add(mat);
+        if (curso.trim().isEmpty()) {
+            throw new IllegalArgumentException("O curso não pode ser nulo");
+        }
+        this.curso = curso;
     }
 
     /**
