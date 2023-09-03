@@ -1,4 +1,5 @@
 package DAO;
+import ModelController.Professor;
 
 import java.io.FileWriter;
 import java.io.IOException;
