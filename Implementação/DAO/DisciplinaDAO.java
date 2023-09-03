@@ -1,10 +1,10 @@
 package DAO;
 
-import ModelController.Disciplina;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+
+import ModelController.Disciplina;
 
 /**
  * Classe que representa um DAO (Data Access Object) para a classe Disciplina.

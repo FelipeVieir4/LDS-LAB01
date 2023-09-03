@@ -1,14 +1,22 @@
 package ModelController;
 
 public class Disciplina {
-    private int proximoID;
+    private static int proximoId = 1; // Variável estática para controlar o próximo ID
+    private int id;
     private String nome;
     private int credito;
     private TipoDisciplina tipo;
 
+    public Disciplina(String nome, int credito, TipoDisciplina tipo) {
+        this.id = proximoId++;
+        this.nome = nome;
+        this.credito = credito;
+        this.tipo = tipo;
+    }
+
     // Métodos de acesso Get
     public int getProximoID() {
-        return proximoID;
+        return id;
     }
 
     public String getNome() {
