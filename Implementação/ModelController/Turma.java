@@ -142,6 +142,10 @@ public class Turma implements ICSV {
         return semestreOfertado;
     }
 
+    public Boolean getEstaAtivo() {
+        return estaAtivo;
+    }
+
     public ArrayList<Integer> getMatriculas() {
         return matriculas;
     }
