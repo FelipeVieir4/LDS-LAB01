@@ -78,9 +78,9 @@ public class SecretariaAcademica extends Pessoa {
      * Matricula um aluno em uma turma.
      *
      * @param turma     A turma em que o aluno será matriculado.
-     * @param matricula A matrícula do aluno.
+     * @param id Id do aluno.
      */
-    public void matricularAluno(Turma turma, Matricula matricula) {
+    public void matricularAluno(Turma turma, int id) {
         // TODO aplicar lógica para DAO salvar uma matrícula num aluno
 
         /*
