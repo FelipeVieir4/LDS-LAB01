@@ -1,7 +1,5 @@
 package ModelController;
 
-import java.util.ArrayList;
-
 /**
  * Classe que representa um aluno, derivada da classe Pessoa.
  */
@@ -54,4 +52,18 @@ public class Aluno extends Pessoa {
         // Implementar o toCSV para a classe DAO salvar o objeto.
         throw new UnsupportedOperationException("Unimplemented method 'toCSV'");
     }
+
+    @Override
+    public String toString() {
+
+        StringBuilder aux = new StringBuilder();
+        aux.append(super.toString());
+        aux.append("Curso: ");
+        aux.append(this.curso);
+        aux.append(System.lineSeparator());
+
+        return aux.toString();
+
+    }
+
 }

@@ -66,6 +66,7 @@ public class App {
     }
 
     public static void efetuarLogin(EnumPerfil perfil) {
+        limparConsole();
         LoginDAO loginDAO = new LoginDAO();
         System.out.println("Informe seu login:");
         String login = scanner.nextLine();
@@ -73,9 +74,10 @@ public class App {
         String senha = scanner.nextLine();
 
         try {
-            System.out.println(perfilLogado);
+
             Pessoa pessoa = loginDAO.login(login, senha, perfil);
-            System.out.println(perfilLogado);
+            perfilLogado = pessoa;
+            System.err.println(perfilLogado.toString());
         } catch (IllegalArgumentException | IOException e) {
             System.out.println("houve um erro com as credenciais de acesso.");
         }

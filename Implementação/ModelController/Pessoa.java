@@ -98,4 +98,23 @@ public abstract class Pessoa implements ICSV {
 
     // Metodos de acesso Get
 
+    @Override
+    public String toString() {
+        StringBuilder aux = new StringBuilder();
+
+        aux.append("Mátricula / ID: ");
+        aux.append(this.id);
+        aux.append(System.lineSeparator());
+
+        aux.append("Nome: ");
+        aux.append(this.nome);
+        aux.append(System.lineSeparator());
+
+        aux.append("login: ");
+        aux.append(this.login);
+        aux.append(System.lineSeparator());
+
+        return aux.toString();
+
+    }
 }

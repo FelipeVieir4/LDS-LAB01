@@ -15,7 +15,7 @@ public class LoginDAO {
         switch (perfil) {
             case ALUNO:
                 Aluno aluno = null;
-                System.out.println("Aluno : " + dadosDoPerfil);
+
                 if (dadosDoPerfil.length > 0 || dadosDoPerfil != null) {
                     // id;login;senha;nome;curso
                     int id = Integer.parseInt(dadosDoPerfil[0]);
@@ -24,6 +24,7 @@ public class LoginDAO {
                     String nomeAluno = dadosDoPerfil[3];
                     String cursoAluno = dadosDoPerfil[4];
                     aluno = new Aluno(id, loginAluno, senhaAluno, nomeAluno, cursoAluno);
+
                 }
                 return aluno;
 

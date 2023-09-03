@@ -104,7 +104,7 @@ public class Util {
             String line;
             while ((line = reader.readLine()) != null) {
                 String lineArray[] = line.split(SEPARADOR_CSV);
-                if (lineArray.length > 0 && lineArray[0].equals(id)) {
+                if (lineArray.length > 0 && lineArray[1].equals(id)) {
                     return lineArray; // Retorna a primeira linha correspondente encontrada
                 }
             }
