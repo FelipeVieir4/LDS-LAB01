@@ -8,7 +8,7 @@ import java.io.IOException;
  */
 public class TurmaDAO {
 
-    private static final String CAMINHO_ARQUIVO_TURMA = "./DB/turmas.csv";
+    private static final String CAMINHO = "./DB/turmas.csv";
 
     /**
      * Salva uma turma em um arquivo CSV.
@@ -17,7 +17,7 @@ public class TurmaDAO {
      * @throws IOException Se ocorrer um erro ao salvar o arquivo.
      */
     public void salvarTurma(Turma turma) throws IOException {
-        String turmaCSV = turma.toCSV();
-        Util.salvarNoArquivo(CAMINHO_ARQUIVO_TURMA, turmaCSV);
+
+        Util.salvarNoArquivo(CAMINHO, turma.toCSV());
     }
 }

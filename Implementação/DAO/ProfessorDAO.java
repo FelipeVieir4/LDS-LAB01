@@ -1,42 +1,45 @@
 package DAO;
-import ModelController.Professor;
 
-import java.io.FileWriter;
+import ModelController.Professor;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * Classe que representa um DAO (Data Access Object) para a classe Professor.
  */
 public class ProfessorDAO {
 
-    private static final String FILENAME = "professores.csv";
+    private static final String CAMINHO = "./DB/professores.csv";
 
-    /**
-     * Salva uma lista de professores em um arquivo CSV.
-     *
-     * @param professores A lista de professores a ser salva.
-     * @throws IOException Se ocorrer um erro ao salvar o arquivo.
-     */
-    public void salvar(List<Professor> professores) throws IOException {
-        FileWriter writer = new FileWriter(FILENAME);
+    public void salvarProfessor(Professor prof) throws IOException {
+        Util.salvarNoArquivo(CAMINHO, prof.toCSV());
 
-        // Escreve o cabeçalho do arquivo CSV
-        writer.append("ID,Login,Senha,Nome\n");
+    }
 
-        // Escreve os dados dos professores no arquivo CSV
-        for (Professor professor : professores) {
-            writer.append(String.valueOf(professor.getId()));
-            writer.append(',');
-            writer.append(professor.getLogin());
-            writer.append(',');
-            writer.append(professor.getSenha());
-            writer.append(',');
-            writer.append(professor.getNome());
-            writer.append('\n');
+    public Professor login(String login, String senha) {
+        String dadosDoPerfil[];
+        Professor professor = null;
+        try {
+            dadosDoPerfil = Util.buscarLoginNoArquivo(login, CAMINHO);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(
+                    "não foi possível autenticar com as credenciais informadas, tente novamente.");
         }
 
-        writer.flush();
-        writer.close();
+        if (dadosDoPerfil == null) {
+            throw new IllegalArgumentException(
+                    "não foi possível autenticar com as credenciais informadas, tente novamente.");
+        }
+
+        if (dadosDoPerfil.length > 0) {
+            // id;login;senha;nome;curso
+            int id = Integer.parseInt(dadosDoPerfil[0]);
+            String loginProfssor = dadosDoPerfil[1];
+            String senhaProfessor = dadosDoPerfil[2];
+            String nomeAluno = dadosDoPerfil[3];
+
+            professor = new Professor(id, loginProfssor, senhaProfessor, nomeAluno);
+
+        }
+        return professor;
     }
 }

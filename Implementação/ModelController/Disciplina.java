@@ -103,6 +103,17 @@ public class Disciplina implements ICSV {
     public String toCSV() {
         StringBuilder aux = new StringBuilder();
 
+        // id;nome;credito;tipo
+
+        aux.append(this.id);
+        aux.append(";");
+        aux.append(this.nome);
+        aux.append(";");
+        aux.append(this.credito);
+        aux.append(";");
+        aux.append(this.tipo);
+        aux.append(System.lineSeparator());
+
         return aux.toString();
     }
 }

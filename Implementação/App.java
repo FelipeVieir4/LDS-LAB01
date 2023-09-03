@@ -3,46 +3,18 @@ import java.util.Scanner;
 
 import javax.naming.NameNotFoundException;
 
-import DAO.LoginDAO;
-import ModelController.EnumPerfil;
-import ModelController.Pessoa;
+import DAO.AlunoDAO;
+import DAO.ProfessorDAO;
+import DAO.SecretariaAcademicaDAO;
+import ModelController.Aluno;
+
+import ModelController.Professor;
+import ModelController.SecretariaAcademica;
+import menus.MenuSecretaria;
+import menus.UtilMenu;
 
 public class App {
     static Scanner scanner = new Scanner(System.in);
-    static Pessoa perfilLogado;
-
-
-    // #region Utilitários
-    static void pausar() {
-        System.out.print(System.lineSeparator() + "Digite qualquer tecla para continuar...");
-        scanner.nextLine();
-    }
-
-    /**
-     * Limpa o console exibindo o programa em execução.
-     * Essa função limpa a tela do console, removendo todas as saídas anteriores.
-     * O método usado para limpar o console varia dependendo do sistema operacional.
-     * Atualmente, o suporte é fornecido para sistemas Windows e outros sistemas
-     * operacionais.
-     * Se ocorrer um erro durante a execução da limpeza do console, a mensagem de
-     * erro será exibida.
-     */
-    public static void limparConsole() {
-        try {
-            if (System.getProperty("os.name").contains("Windows")) {
-                // Limpa o console no Windows
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
-            } else {
-                // Limpa o console em outros sistemas operacionais
-                System.out.print("\033[H\033[2J");
-                System.out.flush();
-            }
-        } catch (Exception e) {
-            // Exibe a mensagem de erro, caso ocorra algum problema
-            System.out.println(e.getMessage());
-        }
-    }
-    // #endregion
 
     /*
      * Metodo com sub menu para escolher papel login
@@ -66,154 +38,96 @@ public class App {
         return opcao;
     }
 
-
-
-    /*
-     * Metodo com sub menu para SECRETARIA ACADEMICA
-     */
-    public static int subMenuSecretariaAcademica() {
-        int opcao = -1;
-        do {
-            System.out.println("==========================");
-            System.out.println("Escolha a tarefa:");
-            System.out.println("1 - Cadastrar novo Curso");
-            System.out.println("Sua opção:");
-            try {
-                opcao = Integer.parseInt(scanner.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Por gentileza, digite um valor válido (número inteiro entre os apresentados)");
-                opcao = -1;
-            }
-        } while (opcao < 1 || opcao > 3);
-        return opcao;
-    }
-
-    /*
-     * Metodo com sub menu para Selecionar uma disciplina ou criar uma nova
-     */
-    public static int subMenuAdicionarDisciplinaNoCurso() {
-        int opcao = -1;
-        System.out.println("==========================");
-        System.out.println("Escolha uma opção:");
-        System.out.println("1 - Selecionar uma disciplina existente");
-        System.out.println("2 - Criar uma nova disciplina");
-        System.out.println("0 - Sair");
-        System.out.println("Sua opção:");
-        try {
-            return opcao = Integer.parseInt(scanner.nextLine());
-        } catch (NumberFormatException e) {
-            System.out.println("Por gentileza, digite um valor válido (número inteiro entre os apresentados)");
-            return opcao = -1;
-        }
-    }
-
-
-    public static void efetuarLogin(EnumPerfil perfil) {
-        limparConsole();
-        LoginDAO loginDAO = new LoginDAO();
+    public static Aluno efetuarLoginAluno() {
+        UtilMenu.limparConsole();
+        AlunoDAO alunoDAO = new AlunoDAO();
         System.out.println("Informe seu login:");
         String login = scanner.nextLine();
         System.out.println("Informe sua senha:");
         String senha = scanner.nextLine();
 
         try {
+            Aluno aluno = alunoDAO.login(login, senha);
+            return aluno;
 
-            Pessoa pessoa = loginDAO.login(login, senha, perfil);
-            perfilLogado = pessoa;
-            System.err.println(perfilLogado.toString());
-        } catch (IllegalArgumentException | IOException e) {
+        } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
+        return null;
 
     }
 
-    public static void menuSecretaria() {
+    public static SecretariaAcademica efetuarLoginSecretario() {
+        UtilMenu.limparConsole();
+        SecretariaAcademicaDAO secDAO = new SecretariaAcademicaDAO();
+        System.out.println("Informe seu login:");
+        String login = scanner.nextLine();
+        System.out.println("Informe sua senha:");
+        String senha = scanner.nextLine();
 
+        try {
+            SecretariaAcademica sec = secDAO.login(login, senha);
+            return sec;
+
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    public static Professor efetuarLoginProfessor() {
+        UtilMenu.limparConsole();
+        ProfessorDAO professorDAO = new ProfessorDAO();
+        System.out.println("Informe seu login:");
+        String login = scanner.nextLine();
+        System.out.println("Informe sua senha:");
+        String senha = scanner.nextLine();
+
+        try {
+            Professor professor = professorDAO.login(login, senha);
+            return professor;
+
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+
+    public static void menuSecretaria(SecretariaAcademica sec) {
+        try {
+
+            MenuSecretaria.init(sec);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static void init() {
         int opcao;
-        EnumPerfil perfil;
         do {
             opcao = subMenuEscolherPerfil();
             switch (opcao) {
                 case 1:
-                    perfil = EnumPerfil.ALUNO;
-                    efetuarLogin(perfil);
+                    Aluno aluno = efetuarLoginAluno();
+                    System.out.println(aluno.toString());
                     break;
                 case 2:
-                    perfil = EnumPerfil.PROFESSOR;
-                    efetuarLogin(perfil);
+                    Professor professor = efetuarLoginProfessor();
+                    System.out.println(professor.toString());
                     break;
                 case 3:
-                    perfil = EnumPerfil.SECRETARIA_ACADEMICA;
-                    efetuarLogin(perfil);
-                    menuSecretaria();
+                    SecretariaAcademica secretario = efetuarLoginSecretario();
+                    System.out.println(secretario.toString());
+                    menuSecretaria(secretario);
                     break;
                 default:
                     System.out.println("Opção inválida!");
                     break;
             }
-            pausar();
-            limparConsole();
+            UtilMenu.pausar();
+            UtilMenu.limparConsole();
         } while (opcao != 0);
     }
-
-
-
-    private static void cadastrarNovoCurso() throws IOException {
-        limparConsole();
-        System.out.println("Informe o nome do curso:");
-        String nome = scanner.nextLine();
-
-        List<Disciplina> disciplinas = new ArrayList<>(); // Crie uma lista vazia para as disciplinas
-        disciplinas = criarNovaDisciplina(disciplinas);
-        Curso curso = new Curso(nome, disciplinas);
-        sa.cadastrarCurso(curso);
-    }
-
-    private static List<Disciplina> criarNovaDisciplina(List<Disciplina> disciplinas) {
-        do {
-            limparConsole();
-            System.out.println("Informe o nome da disciplina:");
-            String nome = scanner.nextLine();
-
-            System.out.println("Informe o crédito da disciplina:");
-            int credito = Integer.parseInt(scanner.nextLine());
-
-            // Mostrar os tipos disponíveis do enumerador
-            System.out.println("Tipos de disciplina disponíveis:");
-            for (TipoDisciplina tipo : TipoDisciplina.values()) {
-                System.out.println(tipo.ordinal() + ". " + tipo.name());
-            }
-
-            // Solicitar ao usuário escolher um tipo de disciplina
-            int escolhaTipo;
-            do {
-                System.out.print("Escolha o número correspondente ao tipo de disciplina: ");
-                escolhaTipo = Integer.parseInt(scanner.nextLine());
-            } while (escolhaTipo < 0 || escolhaTipo >= TipoDisciplina.values().length);
-
-            TipoDisciplina tipoDisciplina = TipoDisciplina.values()[escolhaTipo];
-
-            Disciplina disciplina = new Disciplina(nome, credito, tipoDisciplina);
-            disciplinas.add(disciplina);
-
-            System.out.println("Deseja cadastrar outra disciplina? (S/N)");
-            String resposta = scanner.nextLine().trim().toUpperCase();
-            if (!resposta.equals("S")) {
-                break; // Sai do loop se a resposta não for "S"
-            }
-        } while (true); // Loop infinito, só sairá com "break"
-
-        return disciplinas;
-    }
-
-    private static void listarDisciplinasExistentes() {
-        // metodo nao implementado
-        System.out.println("metodo nao implementado");
-    }
-
 
     public static void main(String[] args) throws NameNotFoundException, Exception {
         init();

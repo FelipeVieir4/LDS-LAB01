@@ -69,9 +69,9 @@ public class Util {
     }
 
     /**
-     * Retorna uma linha do csv baseada no identificador.
+     * Retorna uma linha do csv baseada no identificador LOGIN.
      * 
-     * @param Id     Identificador do dado.
+     * @param login  Identificador do dado.
      * @param perfil em qual banco de dado o dado deve ser buscado.
      * @return O conteúdo do arquivo como uma string ou NULO se não houver
      *         correspondência.
@@ -79,14 +79,40 @@ public class Util {
      *                                  do arquivo.
      * @throws IllegalArgumentException Se o perfil informado não for suportado
      */
-    public static String[] buscarNoArquivo(String id, EnumPerfil perfil, String filePath) throws IOException {
+    public static String[] buscarLoginNoArquivo(String login, String filePath) throws IOException {
 
         File file = new File(filePath);
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String lineArray[] = line.split(SEPARADOR_CSV);
-                if (lineArray.length > 0 && lineArray[1].equals(id)) {
+                if (lineArray.length > 0 && lineArray[1].equals(login)) {
+                    return lineArray; // Retorna a primeira linha correspondente encontrada
+                }
+            }
+        }
+        return null; // Retorna null se não encontrar correspondência
+    }
+
+    /**
+     * Retorna uma linha do csv baseada no identificador ID.
+     * 
+     * @param id     Identificador do dado.
+     * @param perfil em qual banco de dado o dado deve ser buscado.
+     * @return O conteúdo do arquivo como uma string ou NULO se não houver
+     *         correspondência.
+     * @throws IOException              Se ocorrer um erro de leitura ou fechamento
+     *                                  do arquivo.
+     * @throws IllegalArgumentException Se o perfil informado não for suportado
+     */
+    public static String[] buscarIDNoArquivo(String id, EnumPerfil perfil, String filePath) throws IOException {
+
+        File file = new File(filePath);
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String lineArray[] = line.split(SEPARADOR_CSV);
+                if (lineArray.length > 0 && lineArray[0].equals(id)) {
                     return lineArray; // Retorna a primeira linha correspondente encontrada
                 }
             }
