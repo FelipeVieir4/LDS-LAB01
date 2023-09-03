@@ -1,22 +1,16 @@
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import javax.naming.NameNotFoundException;
 
 import DAO.LoginDAO;
-import ModelController.Curso;
-import ModelController.Disciplina;
 import ModelController.EnumPerfil;
 import ModelController.Pessoa;
-import ModelController.SecretariaAcademica;
-import ModelController.TipoDisciplina;
 
 public class App {
     static Scanner scanner = new Scanner(System.in);
     static Pessoa perfilLogado;
-    static SecretariaAcademica sa = new SecretariaAcademica(1, "admin", "1234", "secretaria academica");
+
 
     // #region Utilitários
     static void pausar() {
@@ -72,6 +66,8 @@ public class App {
         return opcao;
     }
 
+
+
     /*
      * Metodo com sub menu para SECRETARIA ACADEMICA
      */
@@ -111,6 +107,7 @@ public class App {
         }
     }
 
+
     public static void efetuarLogin(EnumPerfil perfil) {
         limparConsole();
         LoginDAO loginDAO = new LoginDAO();
@@ -127,6 +124,10 @@ public class App {
         } catch (IllegalArgumentException | IOException e) {
             System.out.println(e.getMessage());
         }
+
+    }
+
+    public static void menuSecretaria() {
 
     }
 
@@ -147,6 +148,7 @@ public class App {
                 case 3:
                     perfil = EnumPerfil.SECRETARIA_ACADEMICA;
                     efetuarLogin(perfil);
+                    menuSecretaria();
                     break;
                 default:
                     System.out.println("Opção inválida!");
@@ -156,6 +158,8 @@ public class App {
             limparConsole();
         } while (opcao != 0);
     }
+
+
 
     private static void cadastrarNovoCurso() throws IOException {
         limparConsole();
@@ -210,19 +214,9 @@ public class App {
         System.out.println("metodo nao implementado");
     }
 
+
     public static void main(String[] args) throws NameNotFoundException, Exception {
-        // init();
-        int opcao;
-        do {
-            opcao = subMenuSecretariaAcademica();
-            switch (opcao) {
-                case 1:
-                    cadastrarNovoCurso();
-                    break;
-                default:
-                    break;
-            }
-        } while (opcao != 0);
+        init();
     }
 
 }

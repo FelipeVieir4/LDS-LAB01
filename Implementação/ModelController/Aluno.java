@@ -49,8 +49,22 @@ public class Aluno extends Pessoa {
      */
     @Override
     public String toCSV() {
-        // Implementar o toCSV para a classe DAO salvar o objeto.
-        throw new UnsupportedOperationException("Unimplemented method 'toCSV'");
+        // id;login;senha;nome;matriculas
+
+        StringBuilder aux = new StringBuilder();
+        aux.append(this.id);
+        aux.append(";");
+        aux.append(this.login);
+        aux.append(";");
+        aux.append(this.senha);
+        aux.append(";");
+        aux.append(this.nome);
+        aux.append(";");
+        aux.append(this.curso);
+        aux.append(";");
+        aux.append(System.lineSeparator());
+        return aux.toString();
+
     }
 
     @Override

@@ -13,10 +13,6 @@ import ModelController.EnumPerfil;
 
 public class Util {
 
-    public static final String CAMINHO_ARQUIVO_ALUNO = "./DB/alunos.csv";
-    public static final String CAMINHO_ARQUIVO_PROFESSORES = "./DB/professores.csv";
-    public static final String CAMINHO_ARQUIVO_SECRETARIA_ACADEMICA = "./DB/secretariaAcademica.csv";
-
     public static final String SEPARADOR_CSV = ";";
     public static final String SEPARADOR_LINHA = System.lineSeparator();
 
@@ -83,21 +79,7 @@ public class Util {
      *                                  do arquivo.
      * @throws IllegalArgumentException Se o perfil informado não for suportado
      */
-    public static String[] buscarNoArquivo(String id, EnumPerfil perfil) throws IOException {
-        String filePath;
-        switch (perfil) {
-            case ALUNO:
-                filePath = CAMINHO_ARQUIVO_ALUNO;
-                break;
-            case PROFESSOR:
-                filePath = CAMINHO_ARQUIVO_PROFESSORES;
-                break;
-            case SECRETARIA_ACADEMICA:
-                filePath = CAMINHO_ARQUIVO_SECRETARIA_ACADEMICA;
-                break;
-            default:
-                throw new IllegalArgumentException("Perfil não suportado: " + perfil);
-        }
+    public static String[] buscarNoArquivo(String id, EnumPerfil perfil, String filePath) throws IOException {
 
         File file = new File(filePath);
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
