@@ -79,7 +79,7 @@ public class App {
             perfilLogado = pessoa;
             System.err.println(perfilLogado.toString());
         } catch (IllegalArgumentException | IOException e) {
-            System.out.println("houve um erro com as credenciais de acesso.");
+            System.out.println(e.getMessage());
         }
 
     }

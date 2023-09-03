@@ -1,22 +1,33 @@
 package DAO;
 
 import java.io.IOException;
-
 import ModelController.Aluno;
 import ModelController.EnumPerfil;
 import ModelController.Pessoa;
+import ModelController.Professor;
+import ModelController.SecretariaAcademica;
 
 public class LoginDAO {
 
     public Pessoa login(String login, String senha, EnumPerfil perfil) throws IOException, IllegalArgumentException {
+        String dadosDoPerfil[];
+        try {
+            dadosDoPerfil = Util.buscarNoArquivo(login, perfil);
+        } catch (Exception e) {
+            throw new IllegalArgumentException(
+                    "não foi possível autenticar com as credenciais informadas, tente novamente.");
+        }
 
-        String dadosDoPerfil[] = Util.buscarNoArquivo(login, perfil);
+        if (dadosDoPerfil == null) {
+            throw new IllegalArgumentException(
+                    "não foi possível autenticar com as credenciais informadas, tente novamente.");
+        }
 
         switch (perfil) {
             case ALUNO:
                 Aluno aluno = null;
 
-                if (dadosDoPerfil.length > 0 || dadosDoPerfil != null) {
+                if (dadosDoPerfil.length > 0) {
                     // id;login;senha;nome;curso
                     int id = Integer.parseInt(dadosDoPerfil[0]);
                     String loginAluno = dadosDoPerfil[1];
@@ -29,17 +40,38 @@ public class LoginDAO {
                 return aluno;
 
             case PROFESSOR:
-                System.out.println("Professor : " + dadosDoPerfil);
-                break;
+                Professor professor = null;
+
+                if (dadosDoPerfil.length > 0) {
+                    // id;login;senha;nome;curso
+                    int id = Integer.parseInt(dadosDoPerfil[0]);
+                    String loginProfssor = dadosDoPerfil[1];
+                    String senhaProfessor = dadosDoPerfil[2];
+                    String nomeAluno = dadosDoPerfil[3];
+
+                    professor = new Professor(id, loginProfssor, senhaProfessor, nomeAluno);
+
+                }
+                return professor;
             case SECRETARIA_ACADEMICA:
-                System.out.println("Secretaria : " + dadosDoPerfil);
-                break;
+                SecretariaAcademica secretariaAcademica = null;
+
+                if (dadosDoPerfil.length > 0) {
+                    // id;login;senha;nome;curso
+                    int id = Integer.parseInt(dadosDoPerfil[0]);
+                    String loginSecretario = dadosDoPerfil[1];
+                    String senhaSecretario = dadosDoPerfil[2];
+                    String nomeSecretario = dadosDoPerfil[3];
+
+                    secretariaAcademica = new SecretariaAcademica(id, loginSecretario, senhaSecretario, nomeSecretario);
+
+                }
+                return secretariaAcademica;
 
             default:
-                System.out.println("Erro : Perfil não encontrado");
-                break;
+                throw new IllegalArgumentException(
+                        "não foi possível autenticar com as credenciais informadas, tente novamente.");
         }
-        return null;
 
     }
 

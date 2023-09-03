@@ -54,6 +54,7 @@ public abstract class Pessoa implements ICSV {
         this.nome = nome;
         this.login = login;
         this.senha = senha;
+        proximoId = id++;
     }
 
     /**

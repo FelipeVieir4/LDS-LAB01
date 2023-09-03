@@ -15,7 +15,7 @@ public class Util {
 
     public static final String CAMINHO_ARQUIVO_ALUNO = "./DB/alunos.csv";
     public static final String CAMINHO_ARQUIVO_PROFESSORES = "./DB/professores.csv";
-    public static final String CAMINHO_ARQUIVO_SECRETARIA_ACADEMICA = "assets/secretariaAcademica.csv";
+    public static final String CAMINHO_ARQUIVO_SECRETARIA_ACADEMICA = "./DB/secretariaAcademica.csv";
 
     public static final String SEPARADOR_CSV = ";";
     public static final String SEPARADOR_LINHA = System.lineSeparator();
