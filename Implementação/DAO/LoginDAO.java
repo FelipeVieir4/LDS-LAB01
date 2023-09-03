@@ -10,9 +10,29 @@ import ModelController.SecretariaAcademica;
 public class LoginDAO {
 
     public Pessoa login(String login, String senha, EnumPerfil perfil) throws IOException, IllegalArgumentException {
+        String caminho = "";
+        final String CAMINHO_ARQUIVO_ALUNO = "./DB/alunos.csv";
+        final String CAMINHO_ARQUIVO_PROFESSORES = "./DB/professores.csv";
+        final String CAMINHO_ARQUIVO_SECRETARIA_ACADEMICA = "./DB/secretariaAcademica.csv";
+
+        switch (perfil) {
+            case ALUNO:
+                caminho = CAMINHO_ARQUIVO_ALUNO;
+                break;
+            case PROFESSOR:
+                caminho = CAMINHO_ARQUIVO_PROFESSORES;
+                break;
+            case SECRETARIA_ACADEMICA:
+                caminho = CAMINHO_ARQUIVO_SECRETARIA_ACADEMICA;
+                break;
+
+            default:
+                break;
+        }
+
         String dadosDoPerfil[];
         try {
-            dadosDoPerfil = Util.buscarNoArquivo(login, perfil);
+            dadosDoPerfil = Util.buscarNoArquivo(login, perfil, caminho);
         } catch (Exception e) {
             throw new IllegalArgumentException(
                     "não foi possível autenticar com as credenciais informadas, tente novamente.");

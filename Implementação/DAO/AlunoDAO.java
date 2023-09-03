@@ -1,43 +1,24 @@
 package DAO;
 
-import ModelController.Aluno;
-
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.List;
+
+import ModelController.Aluno;
 
 /**
  * Classe que representa um DAO (Data Access Object) para a classe Aluno.
  */
 public class AlunoDAO {
 
-    private static final String FILENAME = "alunos.csv";
+    private static final String CAMINHO_ARQUIVO_ALUNO = "./DB/alunos.csv";
 
     /**
-     * Salva uma lista de alunos em um arquivo CSV.
+     * Salva uma turma em um arquivo CSV.
      *
-     * @param alunos A lista de alunos a ser salva.
+     * @param turmas A turma a ser salva.
      * @throws IOException Se ocorrer um erro ao salvar o arquivo.
      */
-    public void salvar(List<Aluno> alunos) throws IOException {
-        FileWriter writer = new FileWriter(FILENAME);
-
-        // Escreve o cabeçalho do arquivo CSV
-        writer.append("ID,Login,Senha,Nome\n");
-
-        // Escreve os dados dos alunos no arquivo CSV
-        for (Aluno aluno : alunos) {
-            writer.append(String.valueOf(aluno.getId()));
-            writer.append(',');
-            writer.append(aluno.getLogin());
-            writer.append(',');
-            writer.append(aluno.getSenha());
-            writer.append(',');
-            writer.append(aluno.getNome());
-            writer.append('\n');
-        }
-
-        writer.flush();
-        writer.close();
+    public void salvarTurma(Aluno aluno) throws IOException {
+        String alunoCSV = aluno.toCSV();
+        Util.salvarNoArquivo(CAMINHO_ARQUIVO_ALUNO, alunoCSV);
     }
 }

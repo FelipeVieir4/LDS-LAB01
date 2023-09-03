@@ -14,8 +14,8 @@ public class Turma implements ICSV {
     private boolean estaAtivo;
     private int anoOfertado;
     private int semestreOfertado;
-    private ArrayList<Integer> matriculas = new ArrayList<Integer>();
     private int valorCustoSemestre;
+    private ArrayList<Integer> matriculas = new ArrayList<Integer>();
 
     /**
      * Cria uma nova instância de Turma com um ID gerado automaticamente.
@@ -156,8 +156,33 @@ public class Turma implements ICSV {
 
     @Override
     public String toCSV() {
-        // TODO aplicar a lógica para gerar o csv
-        throw new UnsupportedOperationException("Unimplemented method 'toCSV'");
+        StringBuilder aux = new StringBuilder();
+
+        // id;professor;disciplina;ativo;anoOfertado;semestreOfertado;valorCustoSemestre;matriculas
+
+        aux.append(this.id);
+        aux.append(";");
+        aux.append(this.professor);
+        aux.append(";");
+        aux.append(this.disciplina);
+        aux.append(";");
+        aux.append(this.estaAtivo);
+        aux.append(";");
+        aux.append(this.anoOfertado);
+        aux.append(";");
+        aux.append(this.semestreOfertado);
+        aux.append(";");
+        aux.append(this.valorCustoSemestre);
+        aux.append(";");
+
+        for (Integer matricula : matriculas) {
+            aux.append(matricula);
+            aux.append(";");
+        }
+
+        aux.append(System.lineSeparator());
+
+        return aux.toString();
     }
 
 }
