@@ -75,4 +75,27 @@ public abstract class Pessoa implements ICSV {
             throw new IllegalArgumentException("A SENHA não pode ser vazia ou nula.");
         }
     }
+
+    public static int getProximoId() {
+        return proximoId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    // Metodos de acesso Get
+
 }
