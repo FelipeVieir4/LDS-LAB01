@@ -1,12 +1,15 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 import javax.naming.NameNotFoundException;
 
-import ModelController.Aluno;
+import DAO.LoginDAO;
+import ModelController.EnumPerfil;
+import ModelController.Pessoa;
 
 public class App {
     static Scanner scanner = new Scanner(System.in);
-    static Aluno aluno;
+    static Pessoa perfilLogado;
 
     // #region Utilitários
     static void pausar() {
@@ -41,28 +44,6 @@ public class App {
     // #endregion
 
     /*
-     * Metodo com sub menu principal
-     */
-    public static int subMenuPrincipal() {
-        int opcao = -1;
-        do {
-            System.out.println("==========================");
-            System.out.println("MENU PRINCIPAL");
-            System.out.println("1 - Login");
-            System.out.println("2 - Matricular");
-            System.out.println("3 - Lista Disciplinas matriculadas");
-            System.out.println("Sua opção:");
-            try {
-                opcao = Integer.parseInt(scanner.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Por gentileza, digite um valor válido (número inteiro entre os apresentados)");
-                opcao = -1;
-            }
-        } while (opcao < 1 || opcao > 3);
-        return opcao;
-    }
-
-    /*
      * Metodo com sub menu para escolher papel login
      */
     public static int subMenuEscolherPerfil() {
@@ -84,59 +65,40 @@ public class App {
         return opcao;
     }
 
-    /**
-     * Metodo para efetuar login no sistema
-     *
-     * @return true se o login for efetuado, false se o usuário escolher sair do
-     *         login
-     */
-    private static boolean efetuarLogin() throws Exception, NameNotFoundException {
-        while (true) {
-            String login;
-            String senha;
+    public static void efetuarLogin(EnumPerfil perfil) {
+        LoginDAO loginDAO = new LoginDAO();
+        System.out.println("Informe seu login:");
+        String login = scanner.nextLine();
+        System.out.println("Informe sua senha:");
+        String senha = scanner.nextLine();
 
-            System.out.println("==========================");
-            System.out.println("Efetuar Login");
-            System.out.print("Digite o nome de usuário (ou 'sair' para sair): ");
-            login = scanner.nextLine();
-
-            if (login.equalsIgnoreCase("sair")) {
-                System.out.println("Saindo do login...");
-                return false; // Retorna false para indicar que o usuário escolheu sair do login
-            }
-
-            System.out.print("Digite a senha: ");
-            senha = scanner.nextLine();
-
-            try {
-                boolean resposta = aluno.autenticar(login, senha);
-                return resposta; // Retorna true para indicar que o login foi efetuado com sucesso
-            } catch (NameNotFoundException e) {
-                System.out.println("Erro ao fazer login: Usuário não cadastrado!");
-            } catch (Exception e) {
-                System.out.println("Erro ao fazer login: Senha incorreta!");
-            }
+        try {
+            System.out.println(perfilLogado);
+            Pessoa pessoa = loginDAO.login(login, senha, perfil);
+            System.out.println(perfilLogado);
+        } catch (IllegalArgumentException | IOException e) {
+            System.out.println("houve um erro com as credenciais de acesso.");
         }
+
     }
 
-    private static void init() throws NameNotFoundException, Exception {
+    public static void init() {
         int opcao;
+        EnumPerfil perfil;
         do {
             opcao = subMenuEscolherPerfil();
-            limparConsole();
-            boolean resp = false;
             switch (opcao) {
                 case 1:
-                    resp = efetuarLogin();
-                    System.out.println(resp);
+                    perfil = EnumPerfil.ALUNO;
+                    efetuarLogin(perfil);
                     break;
                 case 2:
-                    resp = efetuarLogin();
-                    System.out.println(resp);
+                    perfil = EnumPerfil.PROFESSOR;
+                    efetuarLogin(perfil);
                     break;
                 case 3:
-                    resp = efetuarLogin();
-                    System.out.println(resp);
+                    perfil = EnumPerfil.SECRETARIA_ACADEMICA;
+                    efetuarLogin(perfil);
                     break;
                 default:
                     System.out.println("Opção inválida!");
@@ -148,28 +110,7 @@ public class App {
     }
 
     public static void main(String[] args) throws NameNotFoundException, Exception {
-        int opcao;
         init();
-        do {
-            opcao = subMenuPrincipal();
-            limparConsole();
-            switch (opcao) {
-                case 1:
-                    System.out.println("Em breve...");
-                    break;
-                case 2:
-                    System.out.println("Em breve...");
-                    break;
-                case 3:
-                    System.out.println("Em breve...");
-                    break;
-                default:
-                    System.out.println("Opção inválida!");
-                    break;
-            }
-            pausar();
-            limparConsole();
-        } while (opcao != 0);
     }
 
 }
