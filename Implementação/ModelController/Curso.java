@@ -26,4 +26,20 @@ public class Curso {
     public List<Disciplina> getDisciplinas() {
         return disciplinas;
     }
+
+    /**
+     * Retorna uma representação CSV do aluno.
+     *
+     * @return Uma string no formato CSV que representa o aluno.
+     */
+    public String toCSV() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(id).append(";").append(nome).append(";");
+        for (Disciplina disciplina : disciplinas) {
+            sb.append(disciplina).append(";");
+        }
+        sb.append(System.lineSeparator());
+
+        return sb.toString();
+    }
 }
