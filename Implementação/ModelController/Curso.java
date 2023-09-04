@@ -9,9 +9,10 @@ public class Curso {
     private List<Disciplina> disciplinas;
 
     public Curso(String nome, List<Disciplina> disciplinas) {
-        this.id = proximoId++; // Gere automaticamente o próximo ID
+        this.id = proximoId; // Gere automaticamente o próximo ID
         this.nome = nome;
         this.disciplinas = disciplinas;
+        proximoId++;
     }
 
     // Métodos de acesso
@@ -36,7 +37,7 @@ public class Curso {
         StringBuilder sb = new StringBuilder();
         sb.append(id).append(";").append(nome).append(";");
         for (Disciplina disciplina : disciplinas) {
-            sb.append(disciplina).append(";");
+            sb.append(disciplina.getId()).append(";");
         }
         sb.append(System.lineSeparator());
 

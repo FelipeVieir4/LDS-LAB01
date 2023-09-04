@@ -44,7 +44,9 @@ public class Disciplina implements ICSV {
         this.nome = nome;
         this.credito = credito;
         this.tipo = tipo;
-        proximoId = Math.max(proximoId, id + 1); // Atualiza o próximo ID com base no ID fornecido
+        if (proximoId < id) {
+            proximoId = id++;
+        }
     }
 
     private void validarParametros(String nome, int credito) {
@@ -114,6 +116,26 @@ public class Disciplina implements ICSV {
         aux.append(this.tipo);
         aux.append(System.lineSeparator());
 
+        return aux.toString();
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder aux = new StringBuilder();
+
+        aux.append("ID: ");
+        aux.append(this.id);
+        aux.append(System.lineSeparator());
+        aux.append("Nome: ");
+        aux.append(this.nome);
+        aux.append(System.lineSeparator());
+        aux.append("Créditos: ");
+        aux.append(this.credito);
+        aux.append(System.lineSeparator());
+        aux.append("Tipo: ");
+        aux.append(this.tipo);
+        aux.append(System.lineSeparator());
+        aux.append(System.lineSeparator());
         return aux.toString();
     }
 }

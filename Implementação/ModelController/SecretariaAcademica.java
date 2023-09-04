@@ -46,7 +46,7 @@ public class SecretariaAcademica extends Pessoa {
      * @throws IOException
      */
     public void cadastrarCurso(Curso curso) throws IOException {
-        // TODO aplicar lógica para DAO salvar o curso
+       
         CursoDAO dao = new CursoDAO();
         dao.salvar(curso);
     }

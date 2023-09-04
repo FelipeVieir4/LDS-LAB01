@@ -1,5 +1,7 @@
 id; nome; disciplinas
-1;engenharia de software;ModelController.Disciplina@12a3a380;
-2;fisica para doidos;ModelController.Disciplina@12a3a380;ModelController.Disciplina@29453f44;
-2;quimica para doidos;ModelController.Disciplina@511d50c0;ModelController.Disciplina@60e53b93;
+1;Engenharia de Software;6016;
+
+1;Quimica;6009;6016;
+
+1;Matematica;
 
