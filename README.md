@@ -18,71 +18,79 @@ Os professores podem acessar o sistema para saber quais são os alunos que estã
 
 Todos os usuários do sistema têm senhas que são utilizadas para validação do respectivo login.
 
-
 ## História de usuários
 
 Agentes: Secretário(a), Professor(a), Aluno(a)
 
-
 **Secretário(a)** :
-* Como um(a) secretário(a), eu gostaria de ter um login e senha para acessar o sistema.
-* Como um(a) secretário(a), eu gostaria de gerar um currículo para cada semestre.
 
+- Como um(a) secretário(a), eu gostaria de ter um login e senha para acessar o sistema.
+- Como um(a) secretário(a), eu gostaria de gerar um currículo para cada semestre.
 
 **Aluno(a)**
-* Como um(a) aluno(a), eu gostaria de ter um login e senha para acessar o sistema.
-* Como um(a) aluno(a), eu gostaria de realizar a matrícula do semestre.
-* Como um(a) aluno(a), eu gostaria de adiconar disciplinas obrigátórias e opcionais.
 
+- Como um(a) aluno(a), eu gostaria de ter um login e senha para acessar o sistema.
+- Como um(a) aluno(a), eu gostaria de realizar a matrícula do semestre.
+- Como um(a) aluno(a), eu gostaria de adiconar disciplinas obrigátórias e opcionais.
 
 **Professor(a)**
-* Como um(a) professor(a), eu gostaria de ter um login e senha para acessar o sistema.
-* Como um(a) professor(a), eu gostaria de saber quem são os alunos matriculados na minha disciplina.
 
+- Como um(a) professor(a), eu gostaria de ter um login e senha para acessar o sistema.
+- Como um(a) professor(a), eu gostaria de saber quem são os alunos matriculados na minha disciplina.
 
 ## Casos de uso
 
 ### Diagrama de Caso de Uso
+
 ![diagrama de caso de uso](./Projeto/DCU.jpg)
 
 ### Descrição do caso de uso para cada ator
-### *Gerar currículo para o semestre*
+
+### _Gerar currículo para o semestre_
+
 Ator: Secreterário(a)
 
 **Fluxo normal:**
+
 1. O sistema autentica o(a) secretário(a) com login e senha
 2. O(a) secretario(a) gera o currículo para o semestre de um curso.
 3. O(a) secretario(a) adiciona disciplinas do currículo com seus repectivos professores, créditos e infromações para os alunos se matricularem.
 
 **FLuxo alternativo**
-* 3(a) O sistema somente permitirá que disciplinas com no mínimo 3 alunos fiquem ativas após o fim do prazo de matrículas e cancelará
-as que não cumprem estas condições.
 
+- 3(a) O sistema somente permitirá que disciplinas com no mínimo 3 alunos fiquem ativas após o fim do prazo de matrículas e cancelará
+  as que não cumprem estas condições.
 
+### _Matricular-se_
 
-### *Matricular-se*
 Ator: Aluno(a)
 
 **Fluxo normal**:
+
 1. O sistema autentica o(a) aluno(a) com login e senha.
 2. O(a) aluno(a) Matricula-se em até 4 disciplinas obrigatórias e até 2 optativas por semestre.
 3. O sistema notifica o sistema de cobranças após o aluno(a) se matricular
 4. O(a) Aluno(a) pode alterar suas disciplinas as incluindo e/ou excluindo.
 5. O(a) aluno(a) pode cancelar sua matrícula.
 
-
 **Fluxo alternativo**
-* 2a : O(a) aluno não pode se matricular fora do prazo.
-* 4a : O(a) aluno não pode se alterar as disciplinas fora do prazo.
-* 5a : O(a) aluno não pode cancelar a matrícula fora do prazo.
 
+- 2a : O(a) aluno não pode se matricular fora do prazo.
+- 4a : O(a) aluno não pode se alterar as disciplinas fora do prazo.
+- 5a : O(a) aluno não pode cancelar a matrícula fora do prazo.
 
-### *Verificar alunos*
+### _Verificar alunos_
+
 Ator: Professor(a)
 
 **Fluxo principal:**
+
 1. O sistema autentica o(a) professor(a) com login e senha.
 2. O sistema informa para o professor os alunos que estão na(s) sua(s) disciplina(s) informadas.
+
+### Diagrama de Classe (domínio)
+
+![diagrama de classe](./Projeto/Diagramas-ClasseV4.jpg)
 
 ## Referências
 
